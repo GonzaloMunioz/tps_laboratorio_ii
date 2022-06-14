@@ -28,6 +28,16 @@ namespace MiEstetica
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = usuario.ToUpper();
+            _ = controladorCliente + new Cliente(new DateTime(2022, 09, 18), "Paulo", "Dybala", "25347618", "Av. San Martín 458");
+            _ = controladorCliente + new Cliente(new DateTime(2022, 10, 03), "Lionel", "Messi", "24787899", "Leonardo Rosales 23");
+            _ = controladorCliente + new Cliente(new DateTime(2022, 08, 05), "Cristian", "Romero", "33257891", "Jorge 742");
+            _ = controladorCliente + new Cliente(new DateTime(2022, 07, 21), "Lautaro", "Martínez", "37845269", "Av. Libertador 655");
+            _ = controladorCliente + new Cliente(new DateTime(2022, 06, 29), "Rodrigo", "De Paul", "23697845", "Tomás Nother 81");
+            _ = controladorCliente + new Cliente(new DateTime(2022, 06, 29), "Leandro", "Paredes", "41257891", "Bynnon 1429");
+            _ = controladorProducto + new Producto("Natura", 580, "Crema corporal");
+            _ = controladorProducto + new Producto("Sedal", 1500, "Shampoo");
+            _ = controladorProducto + new Producto("Dove", 350, "Jabón");
+            _ = controladorProducto + new Producto("Colgate", 150, "Pasta dental");
         }
 
         private void lblAgregarCliente_Click(object sender, EventArgs e)
@@ -43,15 +53,8 @@ namespace MiEstetica
 
         private void lblBuscarCliente_Click(object sender, EventArgs e)
         {
-            if (controladorCliente.CantidadDeElementos > 0)
-            {
-                frmBuscarCliente frmModificarCliente = new frmBuscarCliente(controladorCliente);
-                frmModificarCliente.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("No hay ningún cliente registrado en el sistema", "Error");
-            }
+            frmBuscarCliente frmModificarCliente = new frmBuscarCliente(controladorCliente);
+            frmModificarCliente.ShowDialog();
         }
 
         private void lblListarInformacion_Click(object sender, EventArgs e)
@@ -88,32 +91,18 @@ namespace MiEstetica
 
         private void btnSerializarXML_Click(object sender, EventArgs e)
         {
-            if (controladorCliente.CantidadDeElementos > 0 && controladorProducto.CantidadDeElementos > 0)
-            {
-                SerializadoraXML<Controlador<Cliente>> serializadoraXMLClientes = new SerializadoraXML<Controlador<Cliente>>();
-                SerializadoraXML<Controlador<Producto>> serializadoraXMLProductos = new SerializadoraXML<Controlador<Producto>>();
-                serializadoraXMLClientes.Serializar(controladorCliente, "Lista-Clientes");
-                serializadoraXMLProductos.Serializar(controladorProducto, "Lista-Productos");
-            }
-            else
-            {
-                MessageBox.Show("Por favor, primero registre al menos un cliente y un producto en el sistema", "Error");
-            }
+            SerializadoraXML<Controlador<Cliente>> serializadoraXMLClientes = new SerializadoraXML<Controlador<Cliente>>();
+            SerializadoraXML<Controlador<Producto>> serializadoraXMLProductos = new SerializadoraXML<Controlador<Producto>>();
+            serializadoraXMLClientes.Serializar(controladorCliente, "Lista-Clientes");
+            serializadoraXMLProductos.Serializar(controladorProducto, "Lista-Productos");
         }
 
         private void btnSerializarJSON_Click(object sender, EventArgs e)
         {
-            if (controladorCliente.CantidadDeElementos > 0 && controladorProducto.CantidadDeElementos > 0)
-            {
-                SerializadoraJSON<Controlador<Cliente>> serializadoraJSONClientes = new SerializadoraJSON<Controlador<Cliente>>();
-                SerializadoraJSON<Controlador<Producto>> serializadoraJSONProductos = new SerializadoraJSON<Controlador<Producto>>();
-                serializadoraJSONClientes.Serializar(controladorCliente, "Lista-Clientes");
-                serializadoraJSONProductos.Serializar(controladorProducto, "Lista-Productos");
-            }
-            else
-            {
-                MessageBox.Show("Por favor, primero registre al menos un cliente y un producto en el sistema", "Error");
-            }
+            SerializadoraJSON<Controlador<Cliente>> serializadoraJSONClientes = new SerializadoraJSON<Controlador<Cliente>>();
+            SerializadoraJSON<Controlador<Producto>> serializadoraJSONProductos = new SerializadoraJSON<Controlador<Producto>>();
+            serializadoraJSONClientes.Serializar(controladorCliente, "Lista-Clientes");
+            serializadoraJSONProductos.Serializar(controladorProducto, "Lista-Productos");
         }
 
         private void btnDeserializarXML_Click(object sender, EventArgs e)
@@ -122,8 +111,8 @@ namespace MiEstetica
             {
                 SerializadoraXML<Controlador<Cliente>> serializadoraXMLClientes = new SerializadoraXML<Controlador<Cliente>>();
                 SerializadoraXML<Controlador<Producto>> serializadoraXMLProductos = new SerializadoraXML<Controlador<Producto>>();
-                controladorCliente = serializadoraXMLClientes.Deserializar("Lista-Clientes");
-                controladorProducto = serializadoraXMLProductos.Deserializar("Lista-Productos");
+                controladorCliente.Concatenar(serializadoraXMLClientes.Deserializar("Lista-Clientes"));
+                controladorProducto.Concatenar(serializadoraXMLProductos.Deserializar("Lista-Productos"));
             }
             catch (Exception ex)
             {
@@ -138,8 +127,8 @@ namespace MiEstetica
             {
                 SerializadoraJSON<Controlador<Cliente>> serializadoraJSONClientes = new SerializadoraJSON<Controlador<Cliente>>();
                 SerializadoraJSON<Controlador<Producto>> serializadoraJSONProductos = new SerializadoraJSON<Controlador<Producto>>();
-                controladorCliente = serializadoraJSONClientes.Deserializar("Lista-Clientes");
-                controladorProducto = serializadoraJSONProductos.Deserializar("Lista-Productos");
+                controladorCliente.Concatenar(serializadoraJSONClientes.Deserializar("Lista-Clientes"));
+                controladorProducto.Concatenar(serializadoraJSONProductos.Deserializar("Lista-Productos"));
             }
             catch (Exception ex)
             {

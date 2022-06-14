@@ -50,7 +50,7 @@ namespace Entidades
         /// Deserializa un archivo XML, retornando un objeto que contiene la información retribuida
         /// </summary>
         /// <param name="nombreArchivo"> Nombre del archivo a leer </param>
-        /// <returns></returns>
+        /// <returns> Retorna el objeto deserializado </returns>
         public T Deserializar(string nombreArchivo)
         {
             string rutaCompleta = ruta + @$"\Serializadora-{nombreArchivo}.xml";

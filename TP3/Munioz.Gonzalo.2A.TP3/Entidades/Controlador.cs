@@ -38,13 +38,13 @@ namespace Entidades
             }
             
         }
-        
+
         /// <summary>
         /// Añade el elemento a la lista del controlador, si es que, en principio, no lo encuentra
         /// </summary>
         /// <param name="c"> Controlador al que se agregará el elemento </param>
         /// <param name="elemento"> Elemento a agregar </param>
-        /// <returns></returns>
+        /// <returns> Retorna un valor booleano en base a si se pudo agregar o no el elemento, TRUE = SÍ / FALSE = NO </returns>
         public static bool operator +(Controlador<T> c, T elemento)
         {
             if (c != elemento)
@@ -52,7 +52,7 @@ namespace Entidades
                 c.listaDeElementos.Add(elemento);
                 return true;
             }
-
+            
             return false;
         }
 
@@ -61,7 +61,7 @@ namespace Entidades
         /// </summary>
         /// <param name="c"> Controlador que contendrá la lista </param>
         /// <param name="elemento"> Elemento a buscar </param>
-        /// <returns></returns>
+        /// <returns> Retorna un valor booleano en base a si la comparación resultó verdadera o no, TRUE = SÍ / FALSE = NO </returns>
         public static bool operator ==(Controlador<T> c, T elemento)
         {
             foreach (T item in c.listaDeElementos)
@@ -80,7 +80,7 @@ namespace Entidades
         /// </summary>
         /// <param name="c"> Controlador que contendrá la lista </param>
         /// <param name="elemento"> Elemento a buscar </param>
-        /// <returns></returns>
+        /// <returns> Retorna un valor booleano en base a si la comparación resultó diferente o no, TRUE = SÍ / FALSE = NO </returns>
         public static bool operator !=(Controlador<T> c, T elemento)
         {
             return !(c == elemento);
@@ -89,7 +89,7 @@ namespace Entidades
         /// <summary>
         /// Retorna un string con la información de toda la lista del controlador
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Retorna un string con toda la información del objeto contenida dentro </returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

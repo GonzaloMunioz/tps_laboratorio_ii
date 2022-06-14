@@ -111,6 +111,7 @@ namespace MiEstetica
             // 
             // rtbListaClientes
             // 
+            this.rtbListaClientes.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.rtbListaClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
             this.rtbListaClientes.Location = new System.Drawing.Point(429, 169);
             this.rtbListaClientes.Name = "rtbListaClientes";
@@ -173,6 +174,7 @@ namespace MiEstetica
             // 
             // rtbProximosTurnos
             // 
+            this.rtbProximosTurnos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rtbProximosTurnos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
             this.rtbProximosTurnos.Location = new System.Drawing.Point(12, 169);
             this.rtbProximosTurnos.Name = "rtbProximosTurnos";
@@ -183,6 +185,7 @@ namespace MiEstetica
             // 
             // rtbProductos
             // 
+            this.rtbProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbProductos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
             this.rtbProductos.Location = new System.Drawing.Point(841, 169);
             this.rtbProductos.Name = "rtbProductos";
@@ -291,8 +294,11 @@ namespace MiEstetica
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lblBienvenido);
             this.Font = new System.Drawing.Font("Ablation Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BEAUTY LIFE";

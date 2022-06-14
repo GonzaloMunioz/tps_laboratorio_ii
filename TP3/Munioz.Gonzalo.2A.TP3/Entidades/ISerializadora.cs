@@ -19,7 +19,7 @@ namespace Entidades
         /// Deserializa un archivo y almacena la información retribuida en un objeto del mismo tipo
         /// </summary>
         /// <param name="nombreArchivo"> Nombre del archivo a leer </param>
-        /// <returns></returns>
+        /// <returns> Retorna el objeto deserializado </returns>
         public T Deserializar(string nombreArchivo);
     }
 }
