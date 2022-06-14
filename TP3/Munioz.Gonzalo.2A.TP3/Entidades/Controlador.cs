@@ -27,6 +27,19 @@ namespace Entidades
         }
 
         /// <summary>
+        /// Agrega a la lista los elementos contenidos dentro del controlador recibido como parámetro
+        /// </summary>
+        /// <param name="controladorAux"> Controlador que contiene los elementos a agregar </param>
+        public void Concatenar(Controlador<T> controladorAux)
+        {
+            foreach (T cliente in controladorAux.ListaDeElementos)
+            {
+                _ = this + cliente;
+            }
+            
+        }
+        
+        /// <summary>
         /// Añade el elemento a la lista del controlador, si es que, en principio, no lo encuentra
         /// </summary>
         /// <param name="c"> Controlador al que se agregará el elemento </param>
