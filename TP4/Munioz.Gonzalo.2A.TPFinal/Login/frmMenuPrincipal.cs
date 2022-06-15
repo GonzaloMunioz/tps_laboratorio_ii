@@ -29,7 +29,7 @@ namespace MiEstetica
         {
             lblUsuario.Text = usuario.ToUpper();
             _ = controladorCliente + new Cliente(new DateTime(2022, 09, 18), "Paulo", "Dybala", "25347618", "Av. San Martín 458");
-            _ = controladorCliente + new Cliente(new DateTime(2022, 10, 03), "Lionel", "Messi", "24787899", "Leonardo Rosales 23");
+            _ = controladorCliente + new Cliente(new DateTime(2022, 10, 03), "Lionel", "Messi", "24787899", "Rosales 23");
             _ = controladorCliente + new Cliente(new DateTime(2022, 08, 05), "Cristian", "Romero", "33257891", "Jorge 742");
             _ = controladorCliente + new Cliente(new DateTime(2022, 07, 21), "Lautaro", "Martínez", "37845269", "Av. Libertador 655");
             _ = controladorCliente + new Cliente(new DateTime(2022, 06, 29), "Rodrigo", "De Paul", "23697845", "Tomás Nother 81");
@@ -38,6 +38,7 @@ namespace MiEstetica
             _ = controladorProducto + new Producto("Sedal", 1500, "Shampoo");
             _ = controladorProducto + new Producto("Dove", 350, "Jabón");
             _ = controladorProducto + new Producto("Colgate", 150, "Pasta dental");
+            Refrescar();
         }
 
         private void lblAgregarCliente_Click(object sender, EventArgs e)
@@ -49,6 +50,7 @@ namespace MiEstetica
                 frmAgregarCliente.Cliente.UltimoID--;
                 MessageBox.Show("El cliente ya se encuentra en el sistema", "Error");
             }
+            Refrescar();
         }
 
         private void lblBuscarCliente_Click(object sender, EventArgs e)
@@ -59,19 +61,7 @@ namespace MiEstetica
 
         private void lblListarInformacion_Click(object sender, EventArgs e)
         {
-            List<Cliente> listaClonada = new List<Cliente>(controladorCliente.ListaDeElementos);
-            listaClonada.Sort((x, y) => DateTime.Compare(x.Turno, y.Turno));
-
-            rtbListaClientes.Clear();
-            rtbProductos.Clear();
-            rtbProximosTurnos.Clear();
-
-            rtbListaClientes.Text += controladorCliente.ToString();
-            rtbProductos.Text += controladorProducto.ToString();
-            foreach (Cliente cliente in listaClonada)
-            {
-                rtbProximosTurnos.Text += (string)cliente + "\n";
-            }
+            Refrescar();
         }
 
         private void lblProductos_Click(object sender, EventArgs e)
@@ -82,6 +72,7 @@ namespace MiEstetica
             {
                 MessageBox.Show("El producto ya se encuentra en el sistema");
             }
+            Refrescar();
         }
 
         private void frmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -91,18 +82,32 @@ namespace MiEstetica
 
         private void btnSerializarXML_Click(object sender, EventArgs e)
         {
-            SerializadoraXML<Controlador<Cliente>> serializadoraXMLClientes = new SerializadoraXML<Controlador<Cliente>>();
-            SerializadoraXML<Controlador<Producto>> serializadoraXMLProductos = new SerializadoraXML<Controlador<Producto>>();
-            serializadoraXMLClientes.Serializar(controladorCliente, "Lista-Clientes");
-            serializadoraXMLProductos.Serializar(controladorProducto, "Lista-Productos");
+            try
+            {
+                SerializadoraXML<Controlador<Cliente>> serializadoraXMLClientes = new SerializadoraXML<Controlador<Cliente>>();
+                SerializadoraXML<Controlador<Producto>> serializadoraXMLProductos = new SerializadoraXML<Controlador<Producto>>();
+                serializadoraXMLClientes.Serializar(controladorCliente, "Lista-Clientes");
+                serializadoraXMLProductos.Serializar(controladorProducto, "Lista-Productos");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error a la hora de serializar los archivos: {ex.Message}", "Error");
+            }
         }
 
         private void btnSerializarJSON_Click(object sender, EventArgs e)
         {
-            SerializadoraJSON<Controlador<Cliente>> serializadoraJSONClientes = new SerializadoraJSON<Controlador<Cliente>>();
-            SerializadoraJSON<Controlador<Producto>> serializadoraJSONProductos = new SerializadoraJSON<Controlador<Producto>>();
-            serializadoraJSONClientes.Serializar(controladorCliente, "Lista-Clientes");
-            serializadoraJSONProductos.Serializar(controladorProducto, "Lista-Productos");
+            try
+            {
+                SerializadoraJSON<Controlador<Cliente>> serializadoraJSONClientes = new SerializadoraJSON<Controlador<Cliente>>();
+                SerializadoraJSON<Controlador<Producto>> serializadoraJSONProductos = new SerializadoraJSON<Controlador<Producto>>();
+                serializadoraJSONClientes.Serializar(controladorCliente, "Lista-Clientes");
+                serializadoraJSONProductos.Serializar(controladorProducto, "Lista-Productos");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error a la hora de serializar los archivos: {ex.Message}", "Error");
+            }
         }
 
         private void btnDeserializarXML_Click(object sender, EventArgs e)
@@ -113,6 +118,7 @@ namespace MiEstetica
                 SerializadoraXML<Controlador<Producto>> serializadoraXMLProductos = new SerializadoraXML<Controlador<Producto>>();
                 controladorCliente.Concatenar(serializadoraXMLClientes.Deserializar("Lista-Clientes"));
                 controladorProducto.Concatenar(serializadoraXMLProductos.Deserializar("Lista-Productos"));
+                Refrescar();
             }
             catch (Exception ex)
             {
@@ -129,10 +135,36 @@ namespace MiEstetica
                 SerializadoraJSON<Controlador<Producto>> serializadoraJSONProductos = new SerializadoraJSON<Controlador<Producto>>();
                 controladorCliente.Concatenar(serializadoraJSONClientes.Deserializar("Lista-Clientes"));
                 controladorProducto.Concatenar(serializadoraJSONProductos.Deserializar("Lista-Productos"));
+                Refrescar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocurrió un error a la hora de deserializar los archivos: {ex.Message}", "Error");
+            }
+        }
+
+        private void Refrescar()
+        {
+            List<Cliente> listaClonada = new List<Cliente>(controladorCliente.ListaDeElementos);
+            listaClonada.Sort((x, y) => DateTime.Compare(x.Turno, y.Turno));
+
+            rtbListaClientes.Clear();
+            rtbProductos.Clear();
+            rtbProximosTurnos.Clear();
+
+            rtbListaClientes.Text += controladorCliente.ToString();
+            rtbProductos.Text += controladorProducto.ToString();
+            foreach (Cliente cliente in listaClonada)
+            {
+                if(cliente.Turno < DateTime.Today)
+                {
+                    rtbProximosTurnos.Text += $"Ø Cliente: {cliente.NombreCompleto}\n" +
+                                              $"Ø Turno: {cliente.Turno.ToShortDateString()} (VENCIDO)\n\n";
+                }
+                else
+                {
+                    rtbProximosTurnos.Text += (string)cliente + "\n";
+                }
             }
         }
     }

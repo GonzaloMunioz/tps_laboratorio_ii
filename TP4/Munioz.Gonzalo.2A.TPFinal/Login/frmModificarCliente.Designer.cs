@@ -181,7 +181,7 @@ namespace MiEstetica
             // rtbCliente
             // 
             this.rtbCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
-            this.rtbCliente.Font = new System.Drawing.Font("Ablation Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rtbCliente.Font = new System.Drawing.Font("Ablation Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rtbCliente.Location = new System.Drawing.Point(12, 41);
             this.rtbCliente.Name = "rtbCliente";
             this.rtbCliente.ReadOnly = true;

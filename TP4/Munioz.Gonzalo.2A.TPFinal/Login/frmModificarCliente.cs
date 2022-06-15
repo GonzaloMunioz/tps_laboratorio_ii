@@ -83,7 +83,7 @@ namespace MiEstetica
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
         private void tbNombre_KeyPress(object sender, KeyPressEventArgs e)
