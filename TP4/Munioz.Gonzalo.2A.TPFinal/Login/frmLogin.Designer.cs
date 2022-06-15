@@ -82,7 +82,7 @@ namespace MiEstetica
             // 
             this.tbContrasenia.Location = new System.Drawing.Point(50, 341);
             this.tbContrasenia.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.tbContrasenia.MaxLength = 150;
+            this.tbContrasenia.MaxLength = 50;
             this.tbContrasenia.Name = "tbContrasenia";
             this.tbContrasenia.PasswordChar = '*';
             this.tbContrasenia.PlaceholderText = "Ingrese su contraseña";
@@ -93,7 +93,7 @@ namespace MiEstetica
             // 
             this.tbUsuario.Location = new System.Drawing.Point(50, 258);
             this.tbUsuario.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.tbUsuario.MaxLength = 150;
+            this.tbUsuario.MaxLength = 50;
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.PlaceholderText = "Ingrese su usuario";
             this.tbUsuario.Size = new System.Drawing.Size(401, 23);

@@ -57,7 +57,7 @@ namespace MiEstetica
             // tbNombre
             // 
             this.tbNombre.Location = new System.Drawing.Point(12, 54);
-            this.tbNombre.MaxLength = 150;
+            this.tbNombre.MaxLength = 30;
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.PlaceholderText = "Ingrese el nombre";
             this.tbNombre.Size = new System.Drawing.Size(255, 24);
@@ -110,7 +110,7 @@ namespace MiEstetica
             // tbApellido
             // 
             this.tbApellido.Location = new System.Drawing.Point(304, 54);
-            this.tbApellido.MaxLength = 150;
+            this.tbApellido.MaxLength = 30;
             this.tbApellido.Name = "tbApellido";
             this.tbApellido.PlaceholderText = "Ingrese el apellido";
             this.tbApellido.Size = new System.Drawing.Size(261, 24);
@@ -130,7 +130,7 @@ namespace MiEstetica
             // tbDireccion
             // 
             this.tbDireccion.Location = new System.Drawing.Point(300, 127);
-            this.tbDireccion.MaxLength = 150;
+            this.tbDireccion.MaxLength = 50;
             this.tbDireccion.Name = "tbDireccion";
             this.tbDireccion.PlaceholderText = "Ingrese la dirección";
             this.tbDireccion.Size = new System.Drawing.Size(265, 24);

@@ -56,7 +56,7 @@ namespace MiEstetica
             // tbMarca
             // 
             this.tbMarca.Location = new System.Drawing.Point(347, 63);
-            this.tbMarca.MaxLength = 150;
+            this.tbMarca.MaxLength = 50;
             this.tbMarca.Name = "tbMarca";
             this.tbMarca.PlaceholderText = "Ingrese la marca del producto";
             this.tbMarca.Size = new System.Drawing.Size(292, 24);
@@ -93,7 +93,7 @@ namespace MiEstetica
             // tbDescripcion
             // 
             this.tbDescripcion.Location = new System.Drawing.Point(350, 218);
-            this.tbDescripcion.MaxLength = 150;
+            this.tbDescripcion.MaxLength = 50;
             this.tbDescripcion.Name = "tbDescripcion";
             this.tbDescripcion.PlaceholderText = "Ingrese una breve descripcion";
             this.tbDescripcion.Size = new System.Drawing.Size(292, 24);

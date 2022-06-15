@@ -113,7 +113,7 @@ namespace MiEstetica
             // tbNombre
             // 
             this.tbNombre.Location = new System.Drawing.Point(30, 43);
-            this.tbNombre.MaxLength = 150;
+            this.tbNombre.MaxLength = 30;
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.PlaceholderText = "Ingrese su nombre";
             this.tbNombre.Size = new System.Drawing.Size(436, 24);
@@ -130,7 +130,7 @@ namespace MiEstetica
             // tbApellido
             // 
             this.tbApellido.Location = new System.Drawing.Point(30, 105);
-            this.tbApellido.MaxLength = 150;
+            this.tbApellido.MaxLength = 30;
             this.tbApellido.Name = "tbApellido";
             this.tbApellido.PlaceholderText = "Ingrese su apellido";
             this.tbApellido.Size = new System.Drawing.Size(436, 24);
@@ -140,7 +140,7 @@ namespace MiEstetica
             // tbUsuario
             // 
             this.tbUsuario.Location = new System.Drawing.Point(30, 167);
-            this.tbUsuario.MaxLength = 150;
+            this.tbUsuario.MaxLength = 50;
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.PlaceholderText = "Ingrese su usuario";
             this.tbUsuario.Size = new System.Drawing.Size(436, 24);
@@ -149,7 +149,7 @@ namespace MiEstetica
             // tbContraseniaRepetir
             // 
             this.tbContraseniaRepetir.Location = new System.Drawing.Point(30, 291);
-            this.tbContraseniaRepetir.MaxLength = 150;
+            this.tbContraseniaRepetir.MaxLength = 50;
             this.tbContraseniaRepetir.Name = "tbContraseniaRepetir";
             this.tbContraseniaRepetir.PasswordChar = '*';
             this.tbContraseniaRepetir.PlaceholderText = "Reingrese su contraseña";
@@ -159,7 +159,7 @@ namespace MiEstetica
             // tbContrasenia
             // 
             this.tbContrasenia.Location = new System.Drawing.Point(29, 229);
-            this.tbContrasenia.MaxLength = 150;
+            this.tbContrasenia.MaxLength = 50;
             this.tbContrasenia.Name = "tbContrasenia";
             this.tbContrasenia.PasswordChar = '*';
             this.tbContrasenia.PlaceholderText = "Ingrese su contraseña";
@@ -169,7 +169,7 @@ namespace MiEstetica
             // tbCorreoElectronico
             // 
             this.tbCorreoElectronico.Location = new System.Drawing.Point(30, 353);
-            this.tbCorreoElectronico.MaxLength = 150;
+            this.tbCorreoElectronico.MaxLength = 50;
             this.tbCorreoElectronico.Name = "tbCorreoElectronico";
             this.tbCorreoElectronico.PlaceholderText = "Ingrese su dirección de correo electrónico";
             this.tbCorreoElectronico.Size = new System.Drawing.Size(436, 24);
