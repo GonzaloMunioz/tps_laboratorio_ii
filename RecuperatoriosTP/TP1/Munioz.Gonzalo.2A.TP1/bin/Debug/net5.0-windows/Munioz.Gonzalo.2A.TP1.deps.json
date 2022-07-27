@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Munioz.Gonzalo.2A.TP1/1.0.0": {
+        "runtime": {
+          "Munioz.Gonzalo.2A.TP1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Munioz.Gonzalo.2A.TP1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
