@@ -8,11 +8,19 @@ namespace Entidades
 {
     public class Producto
     {
+        int id;
+        static int ultimoID = 1;
         string marca;
         float precio;
         float precioVenta;
         string descripcion;
         int cantidad;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
         public string Marca
         {
@@ -51,6 +59,8 @@ namespace Entidades
 
         public Producto(string marca, float precio, string descripcion)
         {
+            id = ultimoID;
+            ultimoID++;
             this.marca = marca;
             this.precio = precio;
             this.precioVenta = precio * 1.4F;
@@ -78,6 +88,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
+            sb.AppendLine($" • ID Producto: {id}");
             sb.AppendLine($" • Marca: {marca}");
             sb.AppendLine($" • Costo: {precio}");
             sb.AppendLine($" • Precio de venta: {precioVenta}");

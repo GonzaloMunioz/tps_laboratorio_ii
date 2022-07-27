@@ -60,14 +60,6 @@ namespace MiEstetica
             this.DialogResult = DialogResult.Cancel;
         }
 
-        private void tbPrecio_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void btnComprar_Click(object sender, EventArgs e)
         {
             if(controladorProducto.CantidadDeElementos > 0)
@@ -95,6 +87,68 @@ namespace MiEstetica
             else
             {
                 MessageBox.Show("No hay ningún cliente y/o producto registrado en el sistema", "Error");
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrWhiteSpace(tbIDProducto.Text))
+            {
+                foreach (Producto producto in controladorProducto.ListaDeElementos)
+                {
+                    if(int.Parse(tbIDProducto.Text) == producto.Id)
+                    {
+                        if (!string.IsNullOrWhiteSpace(tbMarca.Text))
+                        {
+                            producto.Marca = tbMarca.Text;
+                        }
+                        if (!string.IsNullOrWhiteSpace(tbPrecio.Text))
+                        {
+                            producto.Precio = float.Parse(tbPrecio.Text);
+                        }
+                        if (!string.IsNullOrWhiteSpace(tbDescripcion.Text))
+                        {
+                            producto.Descripcion = tbDescripcion.Text;
+                        }
+                        ProductoDBManager.Modificacion(producto);
+                    }
+                }
+            }
+            rtbListaProductos.Clear();
+            rtbListaProductos.Text += controladorProducto.ToString();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(tbIDProducto.Text))
+            {
+                foreach (Producto producto in controladorProducto.ListaDeElementos)
+                {
+                    if (int.Parse(tbIDProducto.Text) == producto.Id)
+                    {
+                        ProductoDBManager.Eliminar(producto.Id);
+                        controladorProducto.ListaDeElementos.Remove(producto);
+                        break;
+                    }
+                }
+            }
+            rtbListaProductos.Clear();
+            rtbListaProductos.Text += controladorProducto.ToString();
+        }
+
+        private void tbPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbIDProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

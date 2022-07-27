@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public static class StringExtension
+    public static class StringExtension // TEMA 21 - MÉTODOS DE EXTENSIÓN
     { 
         /// <summary> 
         /// Recorre un string validando que cada caracter sea de tipo numérico, y tenga una longitud de 8 caracteres

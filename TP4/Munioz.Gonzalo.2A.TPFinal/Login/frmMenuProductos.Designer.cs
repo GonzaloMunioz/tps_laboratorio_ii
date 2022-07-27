@@ -42,6 +42,10 @@ namespace MiEstetica
             this.lblListaProductos = new System.Windows.Forms.Label();
             this.btnComprar = new System.Windows.Forms.Button();
             this.btnVender = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.tbIDProducto = new System.Windows.Forms.TextBox();
+            this.lblIDProducto = new System.Windows.Forms.Label();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblMarca
@@ -74,7 +78,7 @@ namespace MiEstetica
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(350, 199);
+            this.lblDescripcion.Location = new System.Drawing.Point(347, 198);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(112, 17);
             this.lblDescripcion.TabIndex = 5;
@@ -92,11 +96,11 @@ namespace MiEstetica
             // 
             // tbDescripcion
             // 
-            this.tbDescripcion.Location = new System.Drawing.Point(350, 218);
+            this.tbDescripcion.Location = new System.Drawing.Point(347, 218);
             this.tbDescripcion.MaxLength = 50;
             this.tbDescripcion.Name = "tbDescripcion";
             this.tbDescripcion.PlaceholderText = "Ingrese una breve descripcion";
-            this.tbDescripcion.Size = new System.Drawing.Size(292, 24);
+            this.tbDescripcion.Size = new System.Drawing.Size(289, 24);
             this.tbDescripcion.TabIndex = 2;
             // 
             // btnCancelar
@@ -104,9 +108,9 @@ namespace MiEstetica
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(212)))), ((int)(((byte)(236)))));
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.Location = new System.Drawing.Point(677, 217);
+            this.btnCancelar.Location = new System.Drawing.Point(681, 218);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(138, 24);
+            this.btnCancelar.Size = new System.Drawing.Size(177, 24);
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -117,9 +121,9 @@ namespace MiEstetica
             this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(212)))), ((int)(((byte)(236)))));
             this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
-            this.btnAceptar.Location = new System.Drawing.Point(677, 63);
+            this.btnAceptar.Location = new System.Drawing.Point(681, 62);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(138, 24);
+            this.btnAceptar.Size = new System.Drawing.Size(177, 24);
             this.btnAceptar.TabIndex = 3;
             this.btnAceptar.Text = "Agregar";
             this.btnAceptar.UseVisualStyleBackColor = false;
@@ -131,7 +135,7 @@ namespace MiEstetica
             this.rtbListaProductos.Location = new System.Drawing.Point(12, 43);
             this.rtbListaProductos.Name = "rtbListaProductos";
             this.rtbListaProductos.ReadOnly = true;
-            this.rtbListaProductos.Size = new System.Drawing.Size(329, 200);
+            this.rtbListaProductos.Size = new System.Drawing.Size(329, 220);
             this.rtbListaProductos.TabIndex = 6;
             this.rtbListaProductos.Text = "";
             // 
@@ -149,9 +153,9 @@ namespace MiEstetica
             this.btnComprar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(212)))), ((int)(((byte)(236)))));
             this.btnComprar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnComprar.Image = ((System.Drawing.Image)(resources.GetObject("btnComprar.Image")));
-            this.btnComprar.Location = new System.Drawing.Point(677, 118);
+            this.btnComprar.Location = new System.Drawing.Point(681, 115);
             this.btnComprar.Name = "btnComprar";
-            this.btnComprar.Size = new System.Drawing.Size(138, 24);
+            this.btnComprar.Size = new System.Drawing.Size(177, 24);
             this.btnComprar.TabIndex = 4;
             this.btnComprar.Text = "Comprar";
             this.btnComprar.UseVisualStyleBackColor = false;
@@ -162,13 +166,58 @@ namespace MiEstetica
             this.btnVender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(212)))), ((int)(((byte)(236)))));
             this.btnVender.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVender.Image = ((System.Drawing.Image)(resources.GetObject("btnVender.Image")));
-            this.btnVender.Location = new System.Drawing.Point(677, 170);
+            this.btnVender.Location = new System.Drawing.Point(681, 169);
             this.btnVender.Name = "btnVender";
-            this.btnVender.Size = new System.Drawing.Size(138, 24);
+            this.btnVender.Size = new System.Drawing.Size(177, 24);
             this.btnVender.TabIndex = 5;
             this.btnVender.Text = "Vender";
             this.btnVender.UseVisualStyleBackColor = false;
             this.btnVender.Click += new System.EventHandler(this.btnVender_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(212)))), ((int)(((byte)(236)))));
+            this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
+            this.btnModificar.Location = new System.Drawing.Point(498, 286);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(177, 24);
+            this.btnModificar.TabIndex = 8;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // tbIDProducto
+            // 
+            this.tbIDProducto.Location = new System.Drawing.Point(12, 286);
+            this.tbIDProducto.MaxLength = 10;
+            this.tbIDProducto.Name = "tbIDProducto";
+            this.tbIDProducto.PlaceholderText = "Ingrese el ID del producto a modificar/eliminar";
+            this.tbIDProducto.Size = new System.Drawing.Size(447, 24);
+            this.tbIDProducto.TabIndex = 10;
+            this.tbIDProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIDProducto_KeyPress);
+            // 
+            // lblIDProducto
+            // 
+            this.lblIDProducto.AutoSize = true;
+            this.lblIDProducto.Location = new System.Drawing.Point(12, 266);
+            this.lblIDProducto.Name = "lblIDProducto";
+            this.lblIDProducto.Size = new System.Drawing.Size(112, 17);
+            this.lblIDProducto.TabIndex = 11;
+            this.lblIDProducto.Text = "ID Producto";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(212)))), ((int)(((byte)(236)))));
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.Location = new System.Drawing.Point(681, 285);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(177, 24);
+            this.btnEliminar.TabIndex = 12;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // frmMenuProductos
             // 
@@ -177,7 +226,11 @@ namespace MiEstetica
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(827, 255);
+            this.ClientSize = new System.Drawing.Size(870, 323);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.tbIDProducto);
+            this.Controls.Add(this.lblIDProducto);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnVender);
             this.Controls.Add(this.btnComprar);
             this.Controls.Add(this.lblListaProductos);
@@ -218,5 +271,9 @@ namespace MiEstetica
         private System.Windows.Forms.Label lblListaProductos;
         private System.Windows.Forms.Button btnComprar;
         private System.Windows.Forms.Button btnVender;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.TextBox tbIDProducto;
+        private System.Windows.Forms.Label lblIDProducto;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

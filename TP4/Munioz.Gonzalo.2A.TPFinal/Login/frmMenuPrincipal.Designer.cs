@@ -45,10 +45,9 @@ namespace MiEstetica
             this.rtbProductos = new System.Windows.Forms.RichTextBox();
             this.lblBienvenido = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
-            this.btnDeserializarJSON = new System.Windows.Forms.Button();
-            this.btnSerializarJSON = new System.Windows.Forms.Button();
-            this.btnDeserializarXML = new System.Windows.Forms.Button();
-            this.btnSerializarXML = new System.Windows.Forms.Button();
+            this.lblImportarExportarDatos = new System.Windows.Forms.Label();
+            this.lblRecuperarDatos = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -216,57 +215,36 @@ namespace MiEstetica
             this.lblUsuario.TabIndex = 17;
             this.lblUsuario.Text = "Usuario";
             // 
-            // btnDeserializarJSON
+            // lblImportarExportarDatos
             // 
-            this.btnDeserializarJSON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(212)))), ((int)(((byte)(236)))));
-            this.btnDeserializarJSON.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeserializarJSON.Image = ((System.Drawing.Image)(resources.GetObject("btnDeserializarJSON.Image")));
-            this.btnDeserializarJSON.Location = new System.Drawing.Point(1068, 31);
-            this.btnDeserializarJSON.Name = "btnDeserializarJSON";
-            this.btnDeserializarJSON.Size = new System.Drawing.Size(184, 24);
-            this.btnDeserializarJSON.TabIndex = 7;
-            this.btnDeserializarJSON.Text = "DeserializarJSON";
-            this.btnDeserializarJSON.UseVisualStyleBackColor = false;
-            this.btnDeserializarJSON.Click += new System.EventHandler(this.btnDeserializarJSON_Click);
+            this.lblImportarExportarDatos.AutoSize = true;
+            this.lblImportarExportarDatos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblImportarExportarDatos.Location = new System.Drawing.Point(850, 8);
+            this.lblImportarExportarDatos.Name = "lblImportarExportarDatos";
+            this.lblImportarExportarDatos.Size = new System.Drawing.Size(242, 17);
+            this.lblImportarExportarDatos.TabIndex = 19;
+            this.lblImportarExportarDatos.Text = "Importar / Exportar datos";
+            this.lblImportarExportarDatos.Click += new System.EventHandler(this.lblImportarExportarDatos_Click);
             // 
-            // btnSerializarJSON
+            // lblRecuperarDatos
             // 
-            this.btnSerializarJSON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(212)))), ((int)(((byte)(236)))));
-            this.btnSerializarJSON.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSerializarJSON.Image = ((System.Drawing.Image)(resources.GetObject("btnSerializarJSON.Image")));
-            this.btnSerializarJSON.Location = new System.Drawing.Point(1068, 1);
-            this.btnSerializarJSON.Name = "btnSerializarJSON";
-            this.btnSerializarJSON.Size = new System.Drawing.Size(184, 24);
-            this.btnSerializarJSON.TabIndex = 5;
-            this.btnSerializarJSON.Text = "SerializarJSON";
-            this.btnSerializarJSON.UseVisualStyleBackColor = false;
-            this.btnSerializarJSON.Click += new System.EventHandler(this.btnSerializarJSON_Click);
+            this.lblRecuperarDatos.AutoSize = true;
+            this.lblRecuperarDatos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblRecuperarDatos.Location = new System.Drawing.Point(1098, 8);
+            this.lblRecuperarDatos.Name = "lblRecuperarDatos";
+            this.lblRecuperarDatos.Size = new System.Drawing.Size(160, 17);
+            this.lblRecuperarDatos.TabIndex = 20;
+            this.lblRecuperarDatos.Text = "Recuperar datos";
+            this.lblRecuperarDatos.Click += new System.EventHandler(this.lblRecuperarDatos_Click);
             // 
-            // btnDeserializarXML
+            // label2
             // 
-            this.btnDeserializarXML.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(212)))), ((int)(((byte)(236)))));
-            this.btnDeserializarXML.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeserializarXML.Image = ((System.Drawing.Image)(resources.GetObject("btnDeserializarXML.Image")));
-            this.btnDeserializarXML.Location = new System.Drawing.Point(878, 31);
-            this.btnDeserializarXML.Name = "btnDeserializarXML";
-            this.btnDeserializarXML.Size = new System.Drawing.Size(184, 24);
-            this.btnDeserializarXML.TabIndex = 6;
-            this.btnDeserializarXML.Text = "DeserializarXML";
-            this.btnDeserializarXML.UseVisualStyleBackColor = false;
-            this.btnDeserializarXML.Click += new System.EventHandler(this.btnDeserializarXML_Click);
-            // 
-            // btnSerializarXML
-            // 
-            this.btnSerializarXML.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(212)))), ((int)(((byte)(236)))));
-            this.btnSerializarXML.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSerializarXML.Image = ((System.Drawing.Image)(resources.GetObject("btnSerializarXML.Image")));
-            this.btnSerializarXML.Location = new System.Drawing.Point(878, 1);
-            this.btnSerializarXML.Name = "btnSerializarXML";
-            this.btnSerializarXML.Size = new System.Drawing.Size(184, 24);
-            this.btnSerializarXML.TabIndex = 4;
-            this.btnSerializarXML.Text = "SerializarXML";
-            this.btnSerializarXML.UseVisualStyleBackColor = false;
-            this.btnSerializarXML.Click += new System.EventHandler(this.btnSerializarXML_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1089, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(11, 17);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "|";
             // 
             // frmMenuPrincipal
             // 
@@ -274,10 +252,9 @@ namespace MiEstetica
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.btnSerializarXML);
-            this.Controls.Add(this.btnDeserializarXML);
-            this.Controls.Add(this.btnSerializarJSON);
-            this.Controls.Add(this.btnDeserializarJSON);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblRecuperarDatos);
+            this.Controls.Add(this.lblImportarExportarDatos);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.rtbProductos);
             this.Controls.Add(this.rtbProximosTurnos);
@@ -327,10 +304,9 @@ namespace MiEstetica
         private System.Windows.Forms.RichTextBox rtbProductos;
         private System.Windows.Forms.Label lblBienvenido;
         private System.Windows.Forms.Label lblUsuario;
-        private System.Windows.Forms.Button btnDeserializarJSON;
-        private System.Windows.Forms.Button btnSerializarJSON;
-        private System.Windows.Forms.Button btnDeserializarXML;
-        private System.Windows.Forms.Button btnSerializarXML;
+        private System.Windows.Forms.Label lblImportarExportarDatos;
+        private System.Windows.Forms.Label lblRecuperarDatos;
+        private System.Windows.Forms.Label label2;
     }
 }
 

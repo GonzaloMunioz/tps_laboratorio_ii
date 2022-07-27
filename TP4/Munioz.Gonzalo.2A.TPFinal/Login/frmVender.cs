@@ -50,6 +50,7 @@ namespace MiEstetica
                 if (cantidadParseada <= productoAux.Cantidad && cantidadParseada > 0)
                 {
                     productoAux.Cantidad = productoAux.Cantidad - cantidadParseada;
+                    ProductoDBManager.Modificacion(productoAux);
                     MessageBox.Show(GenerarFactura(clienteAux.NombreCompleto, clienteAux.Dni, productoAux.Descripcion, productoAux.Marca, cantidadParseada, (cantidadParseada * productoAux.PrecioVenta)));
                     this.DialogResult = DialogResult.OK;
                 }

@@ -41,14 +41,10 @@ namespace MiEstetica
                 if(cantidadParseada > 0)
                 {
                     productoAux.Cantidad = cantidadParseada;
+                    ProductoDBManager.Modificacion(productoAux);
                     this.DialogResult = DialogResult.OK;
                 }
             }
-        }
-
-        private void btnVender_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void btnCalcularCosto_Click(object sender, EventArgs e)

@@ -41,6 +41,7 @@ namespace MiEstetica
                         if (frmModificarCliente.DialogResult == DialogResult.OK)
                         {
                             MessageBox.Show("La operación se ha realizado con éxito", "Éxito");
+                            break;
                         }
                     }
                 }

@@ -35,6 +35,12 @@ namespace Entidades
 
         }
 
+        public Cliente(int id, DateTime turno, string nombre, string apellido, string dni, string direccion) : this(turno, nombre, apellido, dni, direccion)
+        {
+            this.id = id;
+            ultimoID = id++;
+        }
+
         public Cliente(DateTime turno, string nombre, string apellido, string dni, string direccion) : base(nombre, apellido, dni, direccion)
         {
             id = ultimoID;

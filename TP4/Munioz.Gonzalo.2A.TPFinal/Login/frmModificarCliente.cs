@@ -65,17 +65,18 @@ namespace MiEstetica
                     MessageBox.Show("Por favor ingrese una fecha válida", "Error");
                 }
             }
-
+            ClienteDBManager.Modificacion(cliente);
             rtbCliente.Clear();
             rtbCliente.Text += cliente.ToString();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("¿Está seguro que desea eliminar este cliente del sistema? Esto hará que no se pueda recuperar", "¡Atención!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult dialogResult = MessageBox.Show("¿Está seguro que desea dar de baja este cliente? Podrá recuperar sus datos más tarde pero se eliminará su entidad del sistema", "¡Atención!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (dialogResult == DialogResult.Yes)
             {
+                ClienteDBManager.Baja(cliente.Id);
                 controladorCliente.ListaDeElementos.Remove(cliente);
                 this.DialogResult = DialogResult.OK;
             }

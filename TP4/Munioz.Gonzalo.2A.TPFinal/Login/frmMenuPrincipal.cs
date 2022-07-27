@@ -28,23 +28,22 @@ namespace MiEstetica
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = usuario.ToUpper();
-            _ = controladorCliente + new Cliente(new DateTime(2022, 09, 18), "Paulo", "Dybala", "25347618", "Av. San Martín 458");
-            _ = controladorCliente + new Cliente(new DateTime(2022, 10, 03), "Lionel", "Messi", "24787899", "Rosales 23");
-            _ = controladorCliente + new Cliente(new DateTime(2022, 08, 05), "Cristian", "Romero", "33257891", "Jorge 742");
-            _ = controladorCliente + new Cliente(new DateTime(2022, 07, 21), "Lautaro", "Martínez", "37845269", "Av. Libertador 655");
-            _ = controladorCliente + new Cliente(new DateTime(2022, 06, 29), "Rodrigo", "De Paul", "23697845", "Tomás Nother 81");
-            _ = controladorCliente + new Cliente(new DateTime(2022, 06, 29), "Leandro", "Paredes", "41257891", "Bynnon 1429");
-            _ = controladorProducto + new Producto("Natura", 580, "Crema corporal");
-            _ = controladorProducto + new Producto("Sedal", 1500, "Shampoo");
-            _ = controladorProducto + new Producto("Dove", 350, "Jabón");
-            _ = controladorProducto + new Producto("Colgate", 150, "Pasta dental");
+            _ = controladorCliente + new Cliente(new DateTime(2022, 09, 18), "Diego", "Maradona", "28747618", "Av. San Martín 458");
+            _ = controladorCliente + new Cliente(new DateTime(2022, 10, 03), "Juan Román", "Riquelme", "29587399", "Rosales 23");
+            _ = controladorCliente + new Cliente(new DateTime(2022, 08, 05), "Fernando", "Redondo", "24295421", "Jorge 742");
+            _ = controladorCliente + new Cliente(new DateTime(2022, 07, 21), "Cristiano", "Ronaldo", "17545281", "Av. Libertador 655");
+
+            _ = controladorProducto + new Producto("Plusbelle", 1500, "Shampoo");
+            _ = controladorProducto + new Producto("Rexona", 800, "Crema aftershave");
+            _ = controladorProducto + new Producto("Natura", 500, "Bálsamo hidratante");
+            _ = controladorProducto + new Producto("Vogue", 1000, "Delineador");
+            
             Refrescar();
         }
 
         private void lblAgregarCliente_Click(object sender, EventArgs e)
         {
             frmAgregarCliente frmAgregarCliente = new frmAgregarCliente(controladorCliente);
-
             if (frmAgregarCliente.ShowDialog() == DialogResult.No)
             {
                 frmAgregarCliente.Cliente.UltimoID--;
@@ -56,7 +55,9 @@ namespace MiEstetica
         private void lblBuscarCliente_Click(object sender, EventArgs e)
         {
             frmBuscarCliente frmModificarCliente = new frmBuscarCliente(controladorCliente);
-            frmModificarCliente.ShowDialog();
+            Task tarea = new Task(() => frmModificarCliente.ShowDialog()); // TEMA 19 - PROGRAMACIÓN MULTI-HILO, TEMA 18 - EXPRESIONES LAMBDA
+            tarea.Start();
+            Refrescar();
         }
 
         private void lblListarInformacion_Click(object sender, EventArgs e)
@@ -75,74 +76,34 @@ namespace MiEstetica
             Refrescar();
         }
 
-        private void frmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void btnSerializarXML_Click(object sender, EventArgs e)
+        private void lblImportarExportarDatos_Click(object sender, EventArgs e)
         {
             try
             {
-                SerializadoraXML<Controlador<Cliente>> serializadoraXMLClientes = new SerializadoraXML<Controlador<Cliente>>();
-                SerializadoraXML<Controlador<Producto>> serializadoraXMLProductos = new SerializadoraXML<Controlador<Producto>>();
-                serializadoraXMLClientes.Serializar(controladorCliente, "Lista-Clientes");
-                serializadoraXMLProductos.Serializar(controladorProducto, "Lista-Productos");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error a la hora de serializar los archivos: {ex.Message}", "Error");
-            }
-        }
-
-        private void btnSerializarJSON_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SerializadoraJSON<Controlador<Cliente>> serializadoraJSONClientes = new SerializadoraJSON<Controlador<Cliente>>();
-                SerializadoraJSON<Controlador<Producto>> serializadoraJSONProductos = new SerializadoraJSON<Controlador<Producto>>();
-                serializadoraJSONClientes.Serializar(controladorCliente, "Lista-Clientes");
-                serializadoraJSONProductos.Serializar(controladorProducto, "Lista-Productos");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error a la hora de serializar los archivos: {ex.Message}", "Error");
-            }
-        }
-
-        private void btnDeserializarXML_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SerializadoraXML<Controlador<Cliente>> serializadoraXMLClientes = new SerializadoraXML<Controlador<Cliente>>();
-                SerializadoraXML<Controlador<Producto>> serializadoraXMLProductos = new SerializadoraXML<Controlador<Producto>>();
-                controladorCliente.Concatenar(serializadoraXMLClientes.Deserializar("Lista-Clientes"));
-                controladorProducto.Concatenar(serializadoraXMLProductos.Deserializar("Lista-Productos"));
+                frmGuardarLeerDatos frmGuardarLeerDatos = new frmGuardarLeerDatos(controladorCliente, controladorProducto);
+                Task tarea = Task.Run(() => frmGuardarLeerDatos.ShowDialog()); // TEMA 19 - PROGRAMACIÓN MULTI-HILO, TEMA 18 - EXPRESIONES LAMBDA
                 Refrescar();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ocurrió un error a la hora de deserializar los archivos: {ex.Message}", "Error");
+                MessageBox.Show($"Ocurrio un error a la hora de manipular los datos \nMensaje de error: {ex.Message}", "¡Error!");
             }
-
+            
         }
 
-        private void btnDeserializarJSON_Click(object sender, EventArgs e)
+        private void lblRecuperarDatos_Click(object sender, EventArgs e)
         {
             try
             {
-                SerializadoraJSON<Controlador<Cliente>> serializadoraJSONClientes = new SerializadoraJSON<Controlador<Cliente>>();
-                SerializadoraJSON<Controlador<Producto>> serializadoraJSONProductos = new SerializadoraJSON<Controlador<Producto>>();
-                controladorCliente.Concatenar(serializadoraJSONClientes.Deserializar("Lista-Clientes"));
-                controladorProducto.Concatenar(serializadoraJSONProductos.Deserializar("Lista-Productos"));
+                frmAltaBaja frmAltaBaja = new frmAltaBaja();
+                frmAltaBaja.ShowDialog();
                 Refrescar();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ocurrió un error a la hora de deserializar los archivos: {ex.Message}", "Error");
+                MessageBox.Show($"Ocurrio un error a la hora de manipular los datos \nMensaje de error: {ex.Message}", "¡Error!");
             }
         }
-
         private void Refrescar()
         {
             List<Cliente> listaClonada = new List<Cliente>(controladorCliente.ListaDeElementos);
@@ -166,6 +127,11 @@ namespace MiEstetica
                     rtbProximosTurnos.Text += (string)cliente + "\n";
                 }
             }
+        }
+
+        private void frmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
