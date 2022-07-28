@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
@@ -44,19 +45,24 @@ namespace MiEstetica
         private void lblAgregarCliente_Click(object sender, EventArgs e)
         {
             frmAgregarCliente frmAgregarCliente = new frmAgregarCliente(controladorCliente);
-            if (frmAgregarCliente.ShowDialog() == DialogResult.No)
+            Task hilo = Task.Run(() => frmAgregarCliente.ShowDialog());
+            Task.WaitAll(hilo);
+            if (frmAgregarCliente.DialogResult == DialogResult.No)
             {
                 frmAgregarCliente.Cliente.UltimoID--;
-                MessageBox.Show("El cliente ya se encuentra en el sistema", "Error");
+                MessageBox.Show("El cliente ya se encuentra en el sistema", "¡Error!");
             }
-            Refrescar();
+            else if(frmAgregarCliente.DialogResult == DialogResult.OK)
+            {
+                MessageBox.Show("El cliente se ha agregado al sistema satisfactoriamente", "¡Éxito!");
+                Refrescar();
+            }
         }
 
         private void lblBuscarCliente_Click(object sender, EventArgs e)
         {
             frmBuscarCliente frmModificarCliente = new frmBuscarCliente(controladorCliente);
-            Task tarea = new Task(() => frmModificarCliente.ShowDialog()); // TEMA 19 - PROGRAMACIÓN MULTI-HILO, TEMA 18 - EXPRESIONES LAMBDA
-            tarea.Start();
+            Task hilo = Task.Run(() => frmModificarCliente.ShowDialog()); // TEMA 19 - PROGRAMACIÓN MULTI-HILO, TEMA 18 - EXPRESIONES LAMBDA
             Refrescar();
         }
 
@@ -68,8 +74,10 @@ namespace MiEstetica
         private void lblProductos_Click(object sender, EventArgs e)
         {
             frmMenuProductos frmMenuProductos = new frmMenuProductos(controladorProducto, controladorCliente);
+            Task hilo = Task.Run(() => frmMenuProductos.ShowDialog());
+            Task.WaitAll(hilo);
 
-            if (frmMenuProductos.ShowDialog() == DialogResult.No)
+            if (frmMenuProductos.DialogResult == DialogResult.No)
             {
                 MessageBox.Show("El producto ya se encuentra en el sistema");
             }
@@ -81,7 +89,7 @@ namespace MiEstetica
             try
             {
                 frmGuardarLeerDatos frmGuardarLeerDatos = new frmGuardarLeerDatos(controladorCliente, controladorProducto);
-                Task tarea = Task.Run(() => frmGuardarLeerDatos.ShowDialog()); // TEMA 19 - PROGRAMACIÓN MULTI-HILO, TEMA 18 - EXPRESIONES LAMBDA
+                Task hilo = Task.Run(() => frmGuardarLeerDatos.ShowDialog()); // TEMA 19 - PROGRAMACIÓN MULTI-HILO, TEMA 18 - EXPRESIONES LAMBDA
                 Refrescar();
             }
             catch (Exception ex)
